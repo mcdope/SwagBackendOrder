@@ -439,6 +439,8 @@ class Shopware_Controllers_Backend_SwagBackendOrder extends Shopware_Controllers
      */
     private function sendOrderConfirmationMail($orderModel)
     {
+        return true; // Bail out to prevent mail sending when abusing for order import with AnyShop™ ↷ Shopware
+
         $confirmationMailCreator = new ConfirmationMailCreator(
             new TaxCalculation(),
             $this->get('swag_backend_order.payment_translator'),
